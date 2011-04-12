@@ -187,6 +187,9 @@ sha1() {
 
 ## set env
 #
+# perlbrew
+[ -f ${HOME}/perl5/perlbrew/etc/bashrc ] && source ${HOME}/perl5/perlbrew/etc/bashrc
+
 export SVN_EDITOR=/usr/bin/vim
 export GIT_EDITOR=/usr/bin/vim
 case "${OSTYPE}" in
@@ -194,6 +197,7 @@ darwin*)
     export PATH=/opt/local/bin:$PATH
     ;;
 esac
+export PATH=$HOME/bin:$PATH
 
 ## load user .zshrc configuration file
 [ -f ${HOME}/.zshrc.local ] && source ${HOME}/.zshrc.local
