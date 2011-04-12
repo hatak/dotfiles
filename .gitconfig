@@ -1,0 +1,11 @@
+[user]
+	name = Hisashi HATAKEYAMA
+	email = id.hatak@gmail.com
+[color]
+	ui = auto
+[alias]
+	ci = commit
+	st = status
+	co = checkout
+	df = diff
+	br = branch
