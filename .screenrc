@@ -1,0 +1,16 @@
+### .screenrc
+escape ^Zz              # change escape key
+zombie eave zombie
+vbell off               # set no bell
+bind w windowlist -b    # show list of window
+bind s                  # reset s key
+
+### status
+defhstatus I^En:^EtI
+defbce on
+caption always "%{= ky} %{=b ky}%H%{= ky} (%l) %{= wk} %-w%{=bu dr}%n %t%{-}%+w %= %{= wb}%02y/%02m/%02d %02c:%02s "
+shell -${SHELL}
+
+startup_message off
+autodetach on
+defscrollback 2048
