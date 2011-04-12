@@ -213,6 +213,11 @@ augroup filetypedetect
     au! BufRead,BufNewFile *.ddl    setfiletype sql
 augroup END
 
+" autoload
+let autodate_keyword_pre    = "Last Change:  "
+let autodate_keyword_post   = "."
+let autodate_format         = "%Y/%m/%d %H:%M:%S "
+
 " neocomplcache
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
