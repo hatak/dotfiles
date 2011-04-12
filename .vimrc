@@ -269,3 +269,15 @@ inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
 " AutoComplPop like behavior.
 "let g:neocomplcache_enable_auto_select = 1
+
+" java
+augroup Java
+    autocmd FileType java setlocal tabstop=4 noexpandtab
+augroup END
+
+" Ruby
+augroup Ruby
+    autocmd! Ruby
+    autocmd FileType ruby,eruby,yaml setlocal softtabstop=2 shiftwidth=2 tabstop=2
+augroup END
+
