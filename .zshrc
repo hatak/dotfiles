@@ -13,12 +13,30 @@ export LANG=ja_JP.UTF-8
 autoload colors
 colors
 
-local PROMCOL=$'%{\e[$[31+RANDOM%6]m%}'
+setopt prompt_subst
 local DEFAULT=$'%{\e[0;m%}'
+case "${OSTYPE}" in
+darwin*)
+    local PROMCOL=$'%{\e[$[31+RANDOM%6]m%}'
+    PROMPT='%D{%M%S}'$PROMCOL'[${USER}@%l${WINDOW:+":$WINDOW"}]'$DEFAULT'%(!.#.$) '
+    ;;
+*)
+    case "$USER" in
+    *admin)
+        local PROMCOL=$'%{\e[$[31]m%}'
+        ;;
+    root)
+        local PROMCOL=$DEFAULT
+        ;;
+    *)
+        local PROMCOL=$'%{\e[$[32]m%}'
+        ;;
+    esac
+    PROMPT=$PROMCOL'[${USER}@${HOST%%.*}]'$DEFAULT'%(!.#.$) '
+    ;;
+esac
 
-PROMPT=$PROMCOL'[${USER}@${HOST%%.*}]'$DEFAULT'%(!.#.$) '
 RPROMPT='[%39<...<%~]'
-setopt PROMPT_SUBST
 
 # auto change directory
 #
