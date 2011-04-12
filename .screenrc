@@ -1,6 +1,6 @@
 ### .screenrc
 escape ^Zz              # change escape key
-zombie eave zombie
+zombie ^[
 vbell off               # set no bell
 bind w windowlist -b    # show list of window
 bind s                  # reset s key

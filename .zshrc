@@ -18,7 +18,7 @@ local DEFAULT=$'%{\e[0;m%}'
 case "${OSTYPE}" in
 darwin*)
     local PROMCOL=$'%{\e[$[31+RANDOM%6]m%}'
-    PROMPT='%D{%M%S}'$PROMCOL'[${USER}@%l${WINDOW:+":$WINDOW"}]'$DEFAULT'%(!.#.$) '
+    PROMPT='%D{%M%S} '$PROMCOL'%l${WINDOW:+":$WINDOW"}'$DEFAULT'%(!.#.$) '
     ;;
 *)
     case "$USER" in
