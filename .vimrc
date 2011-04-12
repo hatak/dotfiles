@@ -239,6 +239,7 @@ let g:neocomplcache_dictionary_filetype_lists = {
     \ 'vimshell' : $HOME.'/.vimshell_hist',
     \ 'scheme' : $HOME.'/.gosh_completions'
         \ }
+let g:NeoComplCache_SnippetsDir = $HOME.'/.vim/snippets'
 
 " Define keyword.
 if !exists('g:neocomplcache_keyword_patterns')
