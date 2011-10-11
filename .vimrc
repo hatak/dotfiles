@@ -210,6 +210,9 @@ augroup END
 
 " ========== Plugin settings ========== "
 
+" insert-statusline.vim
+let hi_insert = 'hi StatusLine guifg=DarkRed guibg=LightMagenta gui=none ctermfg=DarkRed ctermbg=LightMagenta cterm=none'
+
 " 拡張子設定
 augroup filetypedetect
     au! BufRead,BufNewFile *.tt     setfiletype html.tt
