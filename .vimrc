@@ -213,10 +213,20 @@ augroup filetypedetect
     au! BufRead,BufNewFile *.ddl    setfiletype sql
 augroup END
 
-" autoload
+" autoload.vim
 let autodate_keyword_pre    = "Last Change:  "
 let autodate_keyword_post   = "."
 let autodate_format         = "%Y/%m/%d %H:%M:%S "
+
+" project.vim
+" If you select a file, close the window immediately.
+let g:proj_flags = "imstc"
+" Toggle Project with \P key.
+nmap <silent> <Leader>P <Plug>ToggleProject
+" Open default Project with \p key.
+nmap <silent> <Leader>p :Project<CR>
+" Expand the folding when opened project.
+autocmd BufAdd .vimprojects silent! %foldopen!
 
 " neocomplcache
 " Disable AutoComplPop.
@@ -278,3 +288,8 @@ augroup Ruby
     autocmd FileType ruby,eruby,yaml setlocal softtabstop=2 shiftwidth=2 tabstop=2
 augroup END
 
+" ========== Load local settings ========== "
+
+if filereadable(expand('~/.vimrc.loal'))
+    source ~/.vimrc.local
+endif
