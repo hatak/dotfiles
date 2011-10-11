@@ -12,6 +12,7 @@ filetype on
 set nocompatible     " running Vim mode
 set viminfo+=!       " add '!' for YankRing plugin
 set shellslash       " to use '/' for path delimiter in Windows
+set modeline         " use modeline mode
 
 " Tab character
 set tabstop=4 shiftwidth=4 softtabstop=0
@@ -131,6 +132,10 @@ highlight PmenuThumb ctermbg=lightgray
 " Disable input methods
 set iminsert=0
 set imsearch=0
+
+" help
+helptags $HOME/.vim/doc
+set helplang=ja
 
 " ========== KeyMap settings ========== "
 " ==================== キーマップ ==================== "
