@@ -1,8 +1,7 @@
 " Vundle
 filetype off
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/vundle/
 call vundle#rc()
-Bundle 'gmarik/vundle'
 Bundle 'Shougo/neocomplcache'
 Bundle 'speeddating.vim'
 Bundle 'DirDiff.vim'
