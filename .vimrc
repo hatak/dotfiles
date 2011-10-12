@@ -1,11 +1,19 @@
 " ========== Basic  settings ========== "
 
-" pathogen.vim
-" Reference:
-" http://redtower.plala.jp/2010/12/08/vim-plugin-pathogen-vim.html
+"" pathogen.vim
+"" Reference:
+"" http://redtower.plala.jp/2010/12/08/vim-plugin-pathogen-vim.html
+"filetype off
+"call pathogen#runtime_append_all_bundles()
+"call pathogen#helptags()
+"filetype on
+
+" Vundle
 filetype off
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
 filetype on
 
 " General
