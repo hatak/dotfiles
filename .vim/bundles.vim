@@ -1,0 +1,12 @@
+" Vundle
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+Bundle 'Shougo/neocomplcache'
+Bundle 'speeddating.vim'
+Bundle 'DirDiff.vim'
+Bundle 'autodate.vim'
+Bundle 'project.tar.gz'
+Bundle 'sudo.vim'
+filetype on
