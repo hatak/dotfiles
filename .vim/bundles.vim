@@ -3,9 +3,10 @@ filetype off
 set rtp+=~/.vim/vundle/
 call vundle#rc()
 Bundle 'Shougo/neocomplcache'
-Bundle 'speeddating.vim'
-Bundle 'DirDiff.vim'
 Bundle 'autodate.vim'
 Bundle 'project.tar.gz'
-Bundle 'sudo.vim'
+Bundle 'smartchr'
+Bundle 'speeddating.vim'
+Bundle 'DirDiff.vim'
+Bundle 'Gist.vim'
 filetype on

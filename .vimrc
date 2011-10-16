@@ -1,4 +1,5 @@
 " ========== Basic  settings ========== "
+scriptencoding urf-8
 
 source <sfile>:h/.vim/bundles.vim
 
@@ -84,14 +85,20 @@ set ambiwidth=double
 " File type
 syntax on " syntax coloring
 
-" Highlight Zenkaku space　
-highlight ZenkakuSpace ctermbg=darkcyan ctermfg=darkcyan
-match ZenkakuSpace /　/
+" Highlight Zenkaku space
+augroup highlightIdegraphicSpace
+    autocmd!
+    autocmd ColorScheme * highlight IdeoGraphicSpace term=underline ctermbg=DarkGreen guibg=DarkGreen
+    autocmd VimEnter,WinEnter * match IdeographicSpace /　/
+augroup END
 
 " Highlight Hankaku space
-highlight WhitespaceEOL ctermbg=red guibg=red
-match WhitespaceEOL /\s\+$/
-autocmd WinEnter * match WhitespaceEOL /\s\+$/
+augroup highlightWhitespaceEOL
+    autocmd!
+    autocmd ColorScheme * highlight WhitespaceEOL term=underline ctermbg=red guibg=red
+    autocmd VimEnter,WinEnter * match WhitespaceEOL /\s\+$/
+augroup END
+
 
 set complete+=k    " to use dictionary for completion
 filetype indent on " to use filetype indent
@@ -128,7 +135,6 @@ set iminsert=0
 set imsearch=0
 
 " help
-helptags $HOME/.vim/doc
 set helplang=ja
 
 " ========== KeyMap settings ========== "
@@ -205,7 +211,7 @@ augroup END
 " ========== Plugin settings ========== "
 
 " insert-statusline.vim
-let hi_insert = 'hi StatusLine guifg=DarkRed guibg=LightMagenta gui=none ctermfg=DarkRed ctermbg=LightMagenta cterm=none'
+let hi_insert = 'hi StatusLine guifg=White guibg=DarkRed gui=none ctermfg=White ctermbg=DarkRed cterm=none'
 
 " 拡張子設定
 augroup filetypedetect
@@ -215,7 +221,7 @@ augroup filetypedetect
     au! BufRead,BufNewFile *.ddl    setfiletype sql
 augroup END
 
-" autoload.vim
+" autodate.vim
 let autodate_keyword_pre    = "Last Change:  "
 let autodate_keyword_post   = "."
 let autodate_format         = "%Y/%m/%d %H:%M:%S "
@@ -279,6 +285,8 @@ inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
+"inoremap <expr> = smartchr#loop(' = ', '=', ' == ')
+
 " java
 augroup Java
     autocmd FileType java setlocal tabstop=4 noexpandtab
@@ -292,6 +300,6 @@ augroup END
 
 " ========== Load local settings ========== "
 
-if filereadable(expand('~/.vimrc.loal'))
+if filereadable(expand('~/.vimrc.local'))
     source ~/.vimrc.local
 endif
