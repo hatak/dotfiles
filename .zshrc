@@ -91,6 +91,9 @@ SAVEHIST=100000
 setopt hist_ignore_dups     # ignore duplication command history list
 setopt share_history        # share command history data
 
+bindkey '^R' history-incremental-pattern-search-backward
+bindkey '^S' history-incremental-pattern-search-forward
+
 ## Completion configuration
 #
 fpath=(${HOME}/.zsh/functions/Completion ${fpath})
@@ -133,14 +136,10 @@ alias rm="rm -i"
 alias pv="perl -le '\$m = shift; eval qq(require \$m) or die qq(module \"\$m\" is not installed \\n); print qq(\$m : ).\$m->VERSION'"
 
 case "${OSTYPE}" in
-darwin*)
-    alias updateports="sudo port selfupdate; sudo port outdated"
-    alias portupgrade="sudo port upgrade installed"
-    ;;
 freebsd*)
     case ${UID} in
     0)
-        updateports() 
+        updateports()
         {
             if [ -f /usr/ports/.portsnap.INDEX ]
             then
@@ -194,15 +193,16 @@ export PERL_CPANM_OPT="--local-lib=${HOME}/perl5"
 
 export SVN_EDITOR=/usr/bin/vim
 export GIT_EDITOR=/usr/bin/vim
-case "${OSTYPE}" in
-darwin*)
-    export PATH=/opt/local/bin:$PATH
-    ;;
-esac
-export PATH=$HOME/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 ## load user .zshrc configuration file
 [ -f ${HOME}/.zshrc.local ] && source ${HOME}/.zshrc.local
 
 ## use local lib
-#[ -d ${HOME}/perl5 ] && eval $(perl -I${HOME}/perl5/lib/perl5 -Mlocal::lib=${HOME}/perl5) 
+[ -d ${HOME}/perl5 ] && eval $(perl -I${HOME}/perl5/lib/perl5 -Mlocal::lib=${HOME}/perl5)
+
+## highlight for less
+if [ -f /usr/local/bin/src-hilite-lesspipe.sh ]; then
+     export LESS='-R'
+     export LESSOPEN='| /usr/local/bin/src-hilite-lesspipe.sh %s'
+fi
