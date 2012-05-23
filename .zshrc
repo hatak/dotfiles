@@ -190,8 +190,6 @@ sha1() {
 # perlbrew
 [ -f ${HOME}/perl5/perlbrew/etc/bashrc ] && source ${HOME}/perl5/perlbrew/etc/bashrc
 
-export PERL_CPANM_OPT="--local-lib=${HOME}/perl5"
-
 export SVN_EDITOR=/usr/bin/vim
 export GIT_EDITOR=/usr/bin/vim
 case "${OSTYPE}" in
@@ -203,6 +201,3 @@ export PATH=$HOME/bin:$PATH
 
 ## load user .zshrc configuration file
 [ -f ${HOME}/.zshrc.local ] && source ${HOME}/.zshrc.local
-
-## use local lib
-#[ -d ${HOME}/perl5 ] && eval $(perl -I${HOME}/perl5/lib/perl5 -Mlocal::lib=${HOME}/perl5) 
