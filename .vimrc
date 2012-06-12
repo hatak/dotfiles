@@ -69,6 +69,9 @@ vnoremap <expr> l foldclosed(line('.')) != -1 ? 'zogv' : 'l'
 set laststatus=2
 set statusline=%<%F\ %r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%4v(ASCII=%03.3b,HEX=%02.2B)\ %l/%L(%P)%m
 
+" powerline
+let g:Powerline_symbols = 'fancy'
+
 " File encoding
 if has('mac')
     set encoding=utf-8
@@ -123,7 +126,7 @@ inoremap <silent> <expr> <CR> (pumvisible() ? "\<C-e>" : "") . "\<CR>"
 inoremap <silent> <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
 
 " color schema
-colorscheme elflord
+colorscheme desert256
 
 " ポップアップメニューの色変える
 highlight Pmenu ctermbg=lightcyan ctermfg=black
