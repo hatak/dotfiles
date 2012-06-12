@@ -2,22 +2,45 @@
 filetype off
 set rtp+=~/.vim/vundle/
 call vundle#rc()
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/neocomplcache-snippets-complete'
-Bundle 'Shougo/unite.vim'
-Bundle 'fuenor/vim-statusline'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'autodate.vim'
-Bundle 'project.tar.gz'
-Bundle 'smartchr'
-Bundle 'speeddating.vim'
-Bundle 'DirDiff.vim'
-Bundle 'Gist.vim'
-Bundle 'errormarker.vim'
-Bundle 'taglist.vim'
-Bundle 'desert256.vim'
-Bundle 'petdance/vim-perl'
-Bundle 'thinca/vim-quickrun'
-Bundle 'ywatase/perldoc-vim'
-Bundle 'ywatase/flymake-perl.vim'
+" Edit {{{
+  Bundle 'autodate.vim'
+  Bundle 'smartchr'
+  Bundle 'speeddating.vim'
+  " }}}
+" Completion {{{
+  Bundle 'Shougo/neocomplcache'
+  Bundle 'Shougo/neocomplcache-snippets-complete'
+" }}}
+" Searching {{{
+  Bundle 'eregex.vim'
+" }}}
+" Programming {{{
+  Bundle 'errormarker.vim'
+  Bundle 'project.tar.gz'
+  Bundle 'taglist.vim'
+  Bundle 'thinca/vim-quickrun'
+  Bundle 'petdance/vim-perl'
+  Bundle 'ywatase/perldoc-vim'
+  Bundle 'ywatase/flymake-perl.vim'
+  Bundle 'ruby.vim'
+  Bundle 'tpope/vim-rails'
+" }}}
+" Syntax {{{
+  Bundle 'JavaScript-syntax'
+  Bundle 'jQuery'
+  Bundle 'nginx.vim'
+  Bundle 'tpope/vim-markdown'
+" }}}
+" Utility {{{
+  Bundle 'DirDiff.vim'
+  Bundle 'Gist.vim'
+  Bundle 'fuenor/vim-statusline'
+  Bundle 'Lokaltog/vim-powerline'
+" }}}
+" ColorSchema {{{
+  Bundle 'desert256.vim'
+" }}}
+" Unite {{{
+  Bundle 'Shougo/unite.vim'
+" }}}
 filetype on
