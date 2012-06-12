@@ -294,6 +294,13 @@ augroup quickfixopen
   autocmd QuickfixCmdPost make cw
 augroup END
 
+" Perl
+augroup Perl
+    noremap K :Perldoc<CR>
+    setlocal iskeyword-=/
+    setlocal iskeyword+=:
+augroup END
+
 " java
 augroup Java
     autocmd FileType java setlocal tabstop=4 noexpandtab

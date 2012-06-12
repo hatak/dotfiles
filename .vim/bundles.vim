@@ -15,7 +15,7 @@ Bundle 'DirDiff.vim'
 Bundle 'Gist.vim'
 Bundle 'errormarker.vim'
 Bundle 'petdance/vim-perl'
-Bundle 'hotchpotch/perldoc-vim'
 Bundle 'thinca/vim-quickrun'
+Bundle 'ywatase/perldoc-vim'
 Bundle 'ywatase/flymake-perl.vim'
 filetype on
