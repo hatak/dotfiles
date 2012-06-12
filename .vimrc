@@ -287,6 +287,17 @@ inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
 "inoremap <expr> = smartchr#loop(' = ', '=', ' == ')
 
+" perl
+augroup Perl
+  setlocal makeprg=$HOME/bin/vimparse.pl\ -c\ %\ $*
+  setlocal errorformat=%f:%l:%m
+  setlocal shellpipe=2>&1\ >
+  if !exists("g:perl_flyquickfixmake")
+    let g:perl_flyquickfixmake = 1
+    au BufWritePost *.pm,*.pl,*.t silent make
+  endif
+augroup END
+
 " java
 augroup Java
     autocmd FileType java setlocal tabstop=4 noexpandtab
@@ -297,15 +308,6 @@ augroup Ruby
     autocmd! Ruby
     autocmd FileType ruby,eruby,yaml setlocal softtabstop=2 shiftwidth=2 tabstop=2
 augroup END
-
-" dbext
-let dbext_default_profile=""
-let dbext_default_type="MYSQL"
-let dbext_default_user="root"
-let dbext_default_passwd=""
-let dbext_default_dbname=""
-let dbext_default_host="localhost"
-let dbext_default_buffer_lines=20
 
 " ========== Load local settings ========== "
 
