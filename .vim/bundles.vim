@@ -9,4 +9,6 @@ Bundle 'smartchr'
 Bundle 'speeddating.vim'
 Bundle 'DirDiff.vim'
 Bundle 'Gist.vim'
+Bundle 'dbext.vim'
+Bundle 'dbext4rdb'
 filetype on
