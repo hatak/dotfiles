@@ -3,7 +3,10 @@ filetype off
 set rtp+=~/.vim/vundle/
 call vundle#rc()
 Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/neocomplcache-snippets-complete'
+Bundle 'Shougo/unite.vim'
 Bundle 'fuenor/vim-statusline'
+Bundle 'Lokaltog/vim-powerline'
 Bundle 'autodate.vim'
 Bundle 'project.tar.gz'
 Bundle 'smartchr'
@@ -11,4 +14,7 @@ Bundle 'speeddating.vim'
 Bundle 'DirDiff.vim'
 Bundle 'Gist.vim'
 Bundle 'errormarker.vim'
+Bundle 'petdance/vim-perl'
+Bundle 'hotchpotch/perldoc-vim'
+Bundle 'thinca/vim-quickrun'
 filetype on

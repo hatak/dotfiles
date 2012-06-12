@@ -8,6 +8,7 @@ set nocompatible     " running Vim mode
 set viminfo+=!       " add '!' for YankRing plugin
 set shellslash       " to use '/' for path delimiter in Windows
 set modeline         " use modeline mode
+set clipboard+=unnamed  " share clipboard
 
 " Tab character
 set tabstop=4 shiftwidth=4 softtabstop=0
@@ -255,9 +256,13 @@ let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 let g:neocomplcache_dictionary_filetype_lists = {
     \ 'default' : '',
     \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
+    \ 'perl'       : $HOME.'/.vim/dict/perl_functions.dict'
+    \ }
 let g:NeoComplCache_SnippetsDir = $HOME.'/.vim/snippets'
+
+let g:neocomplcache_ctags_arguments_list = {
+  \ 'perl' : '-R -h ".pm"'
+  \ }
 
 " Define keyword.
 if !exists('g:neocomplcache_keyword_patterns')
@@ -266,13 +271,10 @@ endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
 " Plugin key-mappings.
-imap <C-k>     <Plug>(neocomplcache_snippets_expand)
-smap <C-k>     <Plug>(neocomplcache_snippets_expand)
+imap <expr><C-k> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-n>"
+smap <C-k> <Plug>(neocomplcache_snippets_expand)
 inoremap <expr><C-g>     neocomplcache#undo_completion()
 inoremap <expr><C-l>     neocomplcache#complete_common_string()
-
-" SuperTab like snippets behavior.
-"imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
@@ -287,14 +289,18 @@ inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
 "inoremap <expr> = smartchr#loop(' = ', '=', ' == ')
 
+augroup quickfixopen
+  autocmd!
+  autocmd QuickfixCmdPost make cw
+augroup END
+
 " perl
 augroup Perl
-  setlocal makeprg=$HOME/bin/vimparse.pl\ -c\ %\ $*
+  setlocal makeprg=$HOME/.vim/vimparse.pl\ -c\ %\ $*
   setlocal errorformat=%f:%l:%m
-  setlocal shellpipe=2>&1\ >
   if !exists("g:perl_flyquickfixmake")
     let g:perl_flyquickfixmake = 1
-    au BufWritePost *.pm,*.pl,*.t silent make
+    au BufWritePost *.pm,*.pl,*.t silent make | redraw!
   endif
 augroup END
 
