@@ -17,4 +17,5 @@ Bundle 'errormarker.vim'
 Bundle 'petdance/vim-perl'
 Bundle 'hotchpotch/perldoc-vim'
 Bundle 'thinca/vim-quickrun'
+Bundle 'ywatase/flymake-perl.vim'
 filetype on

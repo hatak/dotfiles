@@ -294,16 +294,6 @@ augroup quickfixopen
   autocmd QuickfixCmdPost make cw
 augroup END
 
-" perl
-augroup Perl
-  setlocal makeprg=~/.vim/vimparse.pl\ -c\ %\ $*
-  setlocal errorformat=%f:%l:%m
-  if !exists("g:perl_flyquickfixmake")
-    let g:perl_flyquickfixmake = 1
-    au BufWritePost *.pm,*.pl,*.t silent make | redraw!
-  endif
-augroup END
-
 " java
 augroup Java
     autocmd FileType java setlocal tabstop=4 noexpandtab
