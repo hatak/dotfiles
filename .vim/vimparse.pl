@@ -91,7 +91,7 @@ my $args = (@ARGV ? ' ' . join ' ', @ARGV : '');
 
 my $path = "";
 my $current_dir = getcwd;
-my @inc = Project::Libs::find_inc(file($file)->dir->stringify, [qw(lib)], ());
+my @inc = Project::Libs::find_inc(file($file)->dir->stringify, [qw(lib local/lib/perl5)], ());
 $path .= join ' ', map {"-I$_"} @inc if scalar @inc;
 chdir $current_dir;
 

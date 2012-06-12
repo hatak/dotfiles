@@ -296,7 +296,7 @@ augroup END
 
 " perl
 augroup Perl
-  setlocal makeprg=$HOME/.vim/vimparse.pl\ -c\ %\ $*
+  setlocal makeprg=~/.vim/vimparse.pl\ -c\ %\ $*
   setlocal errorformat=%f:%l:%m
   if !exists("g:perl_flyquickfixmake")
     let g:perl_flyquickfixmake = 1
