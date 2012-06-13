@@ -6,6 +6,7 @@ call vundle#rc()
   Bundle 'autodate.vim'
   Bundle 'smartchr'
   Bundle 'speeddating.vim'
+  Bundle 'yanktmp.vim'
   " }}}
 " Completion {{{
   Bundle 'Shougo/neocomplcache'

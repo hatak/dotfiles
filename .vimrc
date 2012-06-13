@@ -292,6 +292,18 @@ inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
 "inoremap <expr> = smartchr#loop(' = ', '=', ' == ')
 
+" taglist.vim
+set tags=tags
+let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
+let Tlist_Show_One_File = 1 " show only current file
+let Tlist_Exit_OnlyWiindow = 1 " close vim if taglist is last window
+
+" tanktmp
+map <silent> sy :call YanktmpYank()<cr>
+map <silent> sp :call YanktmpPaste_p()<cr>
+map <silent> sP :call YanktmpPaste_P()<cr>
+let g:yanktmp_file = '/tmp/yanktmp'
+
 augroup quickfixopen
   autocmd!
   autocmd QuickfixCmdPost make cw
