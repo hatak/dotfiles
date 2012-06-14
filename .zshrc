@@ -10,29 +10,37 @@ export LANG=ja_JP.UTF-8
 #
 # set prompt
 #
-autoload colors
-colors
+autoload colors; colors
 
 autoload -Uz add-zsh-hook
-autoload -Uz vcs_info
-zstyle ":vcs_info:*" check-for-changes true
-zstyle ':vcs_info:*' formats       '[%s:%b]%u%c'
-zstyle ':vcs_info:*' actionformats '[%s:%b|%a]'
-zstyle ":vcs_info:*" unstagedstr "+"
-zstyle ":vcs_info:*" stagedstr "-"
-function _precmd_vcs_info () {
-    psvar=()
-    LANG=en_US.UTF-8 vcs_info
-    psvar[1]="$vcs_info_msg_0_"
-}
-add-zsh-hook precmd _precmd_vcs_info
+autoload -Uz is-at-least
+
+# vcs_info
+if is-at-least 4.3.10; then
+    autoload -Uz vcs_info
+    zstyle ':vcs_info:*' formats       '%f(%F{cyan}%s%f:%F{green}%b%f)'
+    zstyle ':vcs_info:*' actionformats '%f(%F{cyan}%s%f:%F{green}%b%f|%F{red}%a%f)'
+    zstyle ':vcs_info:(svn|bzr):*' branchformat '%F{green}%b%f:%F{yellow}r%r%f'
+    zstyle ":vcs_info:git:*" check-for-changes true
+    zstyle ":vcs_info:git:*" stagedstr '+'
+    zstyle ":vcs_info:git:*" unstagedstr '-'
+    zstyle ':vcs_info:git:*' formats       '%f(%F{green}%b%f%F{green}%c%F{red}%u%f)'
+    zstyle ':vcs_info:git:*' actionformats '%f(%F{green}%b%f|%F{red}%a%f%F{green}%c%F{red}%u%f)'
+
+    function _precmd_vcs_info () {
+        psvar=()
+        LANG=en_US.UTF-8 vcs_info
+        psvar[1]="$vcs_info_msg_0_"
+    }
+
+    add-zsh-hook precmd _precmd_vcs_info
+fi
 
 setopt prompt_subst
-local DEFAULT=$'%F{0}'
 case "${OSTYPE}" in
 darwin*)
     local PROMCOL=$'%F{$[1+RANDOM%6]}'
-    PROMPT='%(?.%F{green}^-^%f.%F{red}@_@%f) '$PROMCOL'%l${WINDOW:+":$WINDOW"}:%h%F{green}%1v%f %(!.#.$) '
+    PROMPT='%(?.%F{green}^-^%f.%F{red}@_@%f) '$PROMCOL'%l${WINDOW:+":$WINDOW"}:%h%F{green}$psvar[1]%f%(!.#.$) '
     ;;
 *)
     case "$USER" in
