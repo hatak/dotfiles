@@ -13,23 +13,37 @@ export LANG=ja_JP.UTF-8
 autoload colors
 colors
 
+autoload -Uz add-zsh-hook
+autoload -Uz vcs_info
+zstyle ":vcs_info:*" check-for-changes true
+zstyle ':vcs_info:*' formats       '[%s:%b]%u%c'
+zstyle ':vcs_info:*' actionformats '[%s:%b|%a]'
+zstyle ":vcs_info:*" unstagedstr "+"
+zstyle ":vcs_info:*" stagedstr "-"
+function _precmd_vcs_info () {
+    psvar=()
+    LANG=en_US.UTF-8 vcs_info
+    psvar[1]="$vcs_info_msg_0_"
+}
+add-zsh-hook precmd _precmd_vcs_info
+
 setopt prompt_subst
-local DEFAULT=$'%{\e[0;m%}'
+local DEFAULT=$'%F{0}'
 case "${OSTYPE}" in
 darwin*)
-    local PROMCOL=$'%{\e[$[31+RANDOM%6]m%}'
-    PROMPT='%D{%M%S} '$PROMCOL'%l${WINDOW:+":$WINDOW"}'$DEFAULT'%(!.#.$) '
+    local PROMCOL=$'%F{$[1+RANDOM%6]}'
+    PROMPT='%(?.%F{green}^-^%f.%F{red}@_@%f) '$PROMCOL'%l${WINDOW:+":$WINDOW"}:%h%F{green}%1v%f %(!.#.$) '
     ;;
 *)
     case "$USER" in
     *admin)
-        local PROMCOL=$'%{\e[$[31]m%}'
+        local PROMCOL=$'%F{1}'
         ;;
     root)
         local PROMCOL=$DEFAULT
         ;;
     *)
-        local PROMCOL=$'%{\e[$[32]m%}'
+        local PROMCOL=$'%F{2}'
         ;;
     esac
     PROMPT=$PROMCOL'[${USER}@${HOST%%.*}]'$DEFAULT'%(!.#.$) '
