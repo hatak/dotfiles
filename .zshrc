@@ -48,13 +48,13 @@ darwin*)
         local PROMCOL=$'%F{1}'
         ;;
     root)
-        local PROMCOL=$DEFAULT
+        local PROMCOL=$'%f'
         ;;
     *)
         local PROMCOL=$'%F{2}'
         ;;
     esac
-    PROMPT=$PROMCOL'[${USER}@${HOST%%.*}]'$DEFAULT'%(!.#.$) '
+    PROMPT=$PROMCOL'[${USER}@${HOST%%.*}]%f%(!.#.$) '
     ;;
 esac
 
