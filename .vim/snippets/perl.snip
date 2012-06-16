@@ -1,0 +1,77 @@
+snippet perl
+    #!/usr/bin/env perl
+
+    use strict;
+    use warnings;
+    use 5.12.0;
+
+    ${1}
+
+snippet d
+    use Data::Dump qw(dump);
+    warn dump ${1:variable}
+
+snippet dd
+    use Data::Dumper;
+    local $Data::Dumper::Indent = 1;
+    local $Data::Dumper::Terse  = 1;
+    warn Dumper ${1:variable}
+
+snippet dds
+    use Data::Dump::Streamer qw(Dumper);
+    warn Dumper ${1:variable}
+
+snippet c
+    use Carp qw/croak/;
+
+snippet n
+    sub new {
+        my $class = shift;
+        my $args = ref $_[0] ? $_[0] : +{@_};
+
+        ${1:code}
+
+        bless $args, $class;
+    }
+
+snippet l
+    use Class::Accessor::Lite
+
+snippet ll
+    Clas::Accessor::Lite->mk_accessors(${1:accessors});
+
+snippet t
+    #!/usr/bin/env perl -w
+    use strict;
+    use Test::More;
+
+    subtest => sub {
+    };
+
+    done_testing;
+
+snippet s
+    my ($self) = @_;
+
+snippet ex
+    use parent qw(Exporter);
+    our @EXPORT_OK = qw();
+
+snippet plack
+    use Plack::Request;
+    sub {
+        my $req = Plack::Request->new($_[0]);
+        given ($req->path) {
+            when ('/') {
+                $req->param('');
+                return [200, ["Content-Type" => "text/html"], ['200 OK']];
+            }
+        }
+        return [404, ["Content-Type" => "text/plain"], ['404 Not Found']];
+    };
+
+snippet r200
+    [ 200, ['Content-Type', 'text/plain'], ['200 OK'] ]
+
+snippet r404
+    [ 404, ['Content-Type', 'text/plain'], ['404 Not Found'] ]
