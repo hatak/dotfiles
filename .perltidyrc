@@ -1,0 +1,3 @@
+# This is a simple of a .perltidyrc configuration file
+# This implements a highly spaced style
+-pbp   # perl best practice

@@ -11,8 +11,10 @@ set modeline         " use modeline mode
 set clipboard+=unnamed  " share clipboard
 
 " Tab character
-set tabstop=4 shiftwidth=4 softtabstop=0
 set expandtab   " use space instead of tab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=0
 set smartindent " smart indent
 
 " Input support
@@ -248,9 +250,12 @@ let g:neocomplcache_enable_at_startup = 1
 " Use smartcase.
 let g:neocomplcache_enable_smart_case = 1
 " Use camel case completion.
-let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_enable_camel_case_completion = 0
 " Use underbar completion.
 let g:neocomplcache_enable_underbar_completion = 1
+
+let g:neocomplcache_auto_completion_start_length = 1
+
 " Set minimum syntax keyword length.
 let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
@@ -258,10 +263,9 @@ let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 " Define dictionary.
 let g:neocomplcache_dictionary_filetype_lists = {
     \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
     \ 'perl'       : $HOME.'/.vim/dict/perl_functions.dict'
     \ }
-let g:NeoComplCache_SnippetsDir = $HOME.'/.vim/snippets'
+let g:neocomplcache_snippets_dir = $HOME.'/.vim/snippets'
 
 let g:neocomplcache_ctags_arguments_list = {
   \ 'perl' : '-R -h ".pm"'
@@ -274,23 +278,21 @@ endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
 " Plugin key-mappings.
-imap <expr><C-k> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-n>"
-smap <C-k> <Plug>(neocomplcache_snippets_expand)
-inoremap <expr><C-g>     neocomplcache#undo_completion()
-inoremap <expr><C-l>     neocomplcache#complete_common_string()
+" <TAB>: expand snippets or completion.
+imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>
+inoremap <expr><C-g> neocomplcache#undo_completion()
+inoremap <expr><C-l> neocomplcache#complete_common_string()
 
-" Recommended key-mappings.
 " <CR>: close popup and save indent.
 inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
-inoremap <expr><C-e>  neocomplcache#cancel_popup()
+inoremap <expr><C-h> neocomplcache#smart_close_popup() . "\<C-h>"
+inoremap <expr><BS>  neocomplcache#smart_close_popup() . "\<C-h>"
+inoremap <expr><C-y> neocomplcache#close_popup()
+inoremap <expr><C-e> neocomplcache#cancel_popup()
 
-"inoremap <expr> = smartchr#loop(' = ', '=', ' == ')
+inoremap <expr> = smartchr#loop(' = ', '=', ' == ')
 
 " taglist.vim
 set tags=tags
@@ -304,16 +306,12 @@ map <silent> sp :call YanktmpPaste_p()<cr>
 map <silent> sP :call YanktmpPaste_P()<cr>
 let g:yanktmp_file = '/tmp/yanktmp'
 
+" quickrun
+nmap <Leader>r <plug>(quickrun)
+
 augroup quickfixopen
   autocmd!
   autocmd QuickfixCmdPost make cw
-augroup END
-
-" Perl
-augroup Perl
-    noremap K :Perldoc<CR>
-    setlocal iskeyword-=/
-    setlocal iskeyword+=:
 augroup END
 
 " java
