@@ -4,18 +4,18 @@ scriptencoding urf-8
 source <sfile>:h/.vim/bundles.vim
 
 " General
-set nocompatible     " running Vim mode
-set viminfo+=!       " add '!' for YankRing plugin
-set shellslash       " to use '/' for path delimiter in Windows
-set modeline         " use modeline mode
+set nocompatible        " running Vim mode
+set viminfo+=!          " add '!' for YankRing plugin
+set shellslash          " to use '/' for path delimiter in Windows
+set modeline            " use modeline mode
 set clipboard+=unnamed  " share clipboard
 
 " Tab character
-set expandtab   " use space instead of tab
+set expandtab       " use space instead of tab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=0
-set smartindent " smart indent
+set smartindent
 
 " Input support
 set backspace=indent,eol,start " to delete everything with backspace key
@@ -69,7 +69,6 @@ vnoremap <expr> l foldclosed(line('.')) != -1 ? 'zogv' : 'l'
 
 " Status line
 set laststatus=2
-set statusline=%<%F\ %r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%4v(ASCII=%03.3b,HEX=%02.2B)\ %l/%L(%P)%m
 
 " powerline
 let g:Powerline_symbols = 'fancy'
@@ -105,27 +104,8 @@ augroup highlightWhitespaceEOL
     autocmd VimEnter,WinEnter * match WhitespaceEOL /\s\+$/
 augroup END
 
-
-set complete+=k    " to use dictionary for completion
 filetype indent on " to use filetype indent
 filetype plugin on " to use filetype plugin
-
-"コンパイラの指定
-autocmd FileType perl,cgi :compiler perl
-
-" Dictionary
-augroup Dictionary
-    autocmd! Dictionary
-    autocmd FileType php setlocal dictionary+=~/.vim/dict/php_functions.dict
-    autocmd FileType perl setlocal dictionary+=~/.vim/dict/perl_functions.dict
-augroup END
-
-" Omni completion
-set completeopt+=menuone " 補完表示設定
-
-" TabでOmni補完及びポップアップメニューの選択
-inoremap <silent> <expr> <CR> (pumvisible() ? "\<C-e>" : "") . "\<CR>"
-inoremap <silent> <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
 
 " color schema
 colorscheme desert256
@@ -144,7 +124,6 @@ set imsearch=0
 set helplang=ja
 
 " ========== KeyMap settings ========== "
-" ==================== キーマップ ==================== "
 " 表示行単位で移動
 nnoremap j  gj
 nnoremap k  gk
@@ -215,10 +194,6 @@ augroup Binary
 augroup END
 
 " ========== Plugin settings ========== "
-
-" insert-statusline.vim
-let hi_insert = 'hi StatusLine guifg=White guibg=DarkRed gui=none ctermfg=White ctermbg=DarkRed cterm=none'
-
 " 拡張子設定
 augroup filetypedetect
     au! BufRead,BufNewFile *.tt     setfiletype html.tt
@@ -263,7 +238,8 @@ let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 " Define dictionary.
 let g:neocomplcache_dictionary_filetype_lists = {
     \ 'default' : '',
-    \ 'perl'       : $HOME.'/.vim/dict/perl_functions.dict'
+    \ 'perl'       : $HOME.'/.vim/dict/perl_functions.dict',
+    \ 'php'        : $HOME.'/.vim/dict/php_functions.dict'
     \ }
 let g:neocomplcache_snippets_dir = $HOME.'/.vim/snippets'
 
@@ -326,7 +302,6 @@ augroup Ruby
 augroup END
 
 " ========== Load local settings ========== "
-
 if filereadable(expand('~/.vimrc.local'))
     source ~/.vimrc.local
 endif

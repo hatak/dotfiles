@@ -6,6 +6,9 @@ setlocal tabstop=4
 setlocal shiftwidth=4
 setlocal softtabstop=0
 
+" Dictionary
+setlocal dictionary+=~/.vim/dict/perl_functions.dict
+
 " Perldoc settings
 noremap K :Perldoc<CR>
 setlocal iskeyword-=/
