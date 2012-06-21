@@ -216,6 +216,11 @@ nmap <silent> <Leader>P <Plug>ToggleProject
 nmap <silent> <Leader>p :Project<CR>
 " Expand the folding when opened project.
 autocmd BufAdd .vimprojects silent! %foldopen!
+if getcwd() != $HOME
+    if filereadable(getcwd().'/.vimprojects')
+        exec 'Project .vimprojects'
+    endif
+endif
 
 " neocomplcache
 " Disable AutoComplPop.
@@ -268,7 +273,7 @@ inoremap <expr><BS>  neocomplcache#smart_close_popup() . "\<C-h>"
 inoremap <expr><C-y> neocomplcache#close_popup()
 inoremap <expr><C-e> neocomplcache#cancel_popup()
 
-inoremap <expr> = smartchr#loop(' = ', '=', ' == ')
+inoremap <expr> = smartchr#loop(' = ', ' => ', ' == ', '=')
 
 " taglist.vim
 set tags=tags

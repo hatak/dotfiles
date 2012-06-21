@@ -17,8 +17,8 @@ call vundle#rc()
 " }}}
 " Programming {{{
   Bundle 'errormarker.vim'
-  Bundle 'project.tar.gz'
   Bundle 'taglist.vim'
+  Bundle 'project.tar.gz'
   Bundle 'thinca/vim-quickrun'
   Bundle 'petdance/vim-perl'
   Bundle 'ywatase/perldoc-vim'
