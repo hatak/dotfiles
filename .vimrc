@@ -1,5 +1,5 @@
 " ========== Basic  settings ========== "
-scriptencoding urf-8
+scriptencoding utf-8
 
 source <sfile>:h/.vim/bundles.vim
 
@@ -8,7 +8,8 @@ set nocompatible        " running Vim mode
 set viminfo+=!          " add '!' for YankRing plugin
 set shellslash          " to use '/' for path delimiter in Windows
 set modeline            " use modeline mode
-set clipboard+=unnamed  " share clipboard
+"set clipboard+=unnamed  " share clipboard
+"set clipboard+=autoselect
 
 " Tab character
 set expandtab       " use space instead of tab
@@ -193,6 +194,8 @@ augroup Binary
     autocmd BufWritePost *.bin,*.swf set nomod | endif
 augroup END
 
+autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
+
 " ========== Plugin settings ========== "
 " 拡張子設定
 augroup filetypedetect
@@ -279,7 +282,52 @@ inoremap <expr> = smartchr#loop(' = ', ' => ', ' == ', '=')
 set tags=tags
 let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
 let Tlist_Show_One_File = 1 " show only current file
-let Tlist_Exit_OnlyWiindow = 1 " close vim if taglist is last window
+let Tlist_Exit_OnlyWindow = 1 " close vim if taglist is last window
+
+" cscope
+if has("cscope")
+  set csprg=/usr/local/bin/cscope
+  set csto=0
+  set cst
+  set nocsverb
+  " add any database in current directory
+  if filereadable("cscope.out")
+    cs add cscope.out
+  " else add database pointed to by environment
+  elseif $CSCOPE_DB != ""
+    cs add $CSCOPE_DB
+  endif
+  set csverb
+  set cscopequickfix=s-,c-,d-,i-,t-,e-
+endif
+
+" srcexpl
+let g:SrcExpl_updateTagsCmd = "/usr/local/bin/ctags --sort=foldcase -R ."
+let g:SrcExpl_refreshTime = 100   " auto reflesh
+let g:SrcExpl_isUpdateTags  = 1   " auto update
+let g:SrcExpl_jumpKey = "<ENTER>"
+let g:SrcExpl_gobackKey = "<SPACE>"
+let g:SrcExpl_pluginList = [
+        \ "__Tag_List__",
+        \ "_NERD_tree_",
+        \ "Source_Explorer"
+        \ ]
+let g:SrcExpl_searchLocalDef = 1
+let g:SrcExpl_updateTagsKey = "<F12>"
+nmap <C-H> <C-W>h
+nmap <C-J> <C-W>j
+nmap <C-K> <C-W>k
+nmap <C-L> <C-W>l
+
+" Trinity
+" Open and close all the three plugins on the same time
+nmap <F8>   :TrinityToggleAll<CR>
+" Open and close the srcexpl.vim separately
+nmap <F9>   :TrinityToggleSourceExplorer<CR>
+" Open and close the taglist.vim separately
+nmap <F10>  :TrinityToggleTagList<CR>
+" Open and close the NERD_tree.vim separately
+nmap <F11>  :TrinityToggleNERDTree<CR>
 
 " tanktmp
 map <silent> sy :call YanktmpYank()<cr>

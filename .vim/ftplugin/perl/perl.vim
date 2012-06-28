@@ -18,3 +18,6 @@ setlocal iskeyword+=:
 map ,pt <ESC>:%! perltidy<CR>
 map ,ptv <ESC>:%'<, '>! perltidy<CR>
 
+" toggle
+"TrinityToggleAll
+Tlist
