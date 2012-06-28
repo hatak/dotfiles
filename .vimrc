@@ -283,6 +283,10 @@ set tags=tags
 let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
 let Tlist_Show_One_File = 1 " show only current file
 let Tlist_Exit_OnlyWindow = 1 " close vim if taglist is last window
+let Tlist_Use_Right_Window = 1
+let Tlist_Auto_Open = 1
+let Tlist_Auto_Update = 1
+nmap <F10>  :Tlist<CR>
 
 " cscope
 if has("cscope")
@@ -304,30 +308,22 @@ endif
 " srcexpl
 let g:SrcExpl_updateTagsCmd = "/usr/local/bin/ctags --sort=foldcase -R ."
 let g:SrcExpl_refreshTime = 100   " auto reflesh
-let g:SrcExpl_isUpdateTags  = 1   " auto update
+let g:SrcExpl_isUpdateTags  = 0   " disable auto update
 let g:SrcExpl_jumpKey = "<ENTER>"
 let g:SrcExpl_gobackKey = "<SPACE>"
-let g:SrcExpl_pluginList = [
-        \ "__Tag_List__",
-        \ "_NERD_tree_",
-        \ "Source_Explorer"
-        \ ]
+"let g:SrcExpl_RefreshMapKey = "<F8>"
 let g:SrcExpl_searchLocalDef = 1
 let g:SrcExpl_updateTagsKey = "<F12>"
 nmap <C-H> <C-W>h
 nmap <C-J> <C-W>j
 nmap <C-K> <C-W>k
 nmap <C-L> <C-W>l
+nmap <F11>  :SrcExplToggle<CR>
 
-" Trinity
-" Open and close all the three plugins on the same time
-nmap <F8>   :TrinityToggleAll<CR>
-" Open and close the srcexpl.vim separately
-nmap <F9>   :TrinityToggleSourceExplorer<CR>
-" Open and close the taglist.vim separately
-nmap <F10>  :TrinityToggleTagList<CR>
-" Open and close the NERD_tree.vim separately
-nmap <F11>  :TrinityToggleNERDTree<CR>
+" NERD Tree
+let g:NERDTreeWinPos = "left"
+nmap <F9>  :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " tanktmp
 map <silent> sy :call YanktmpYank()<cr>
