@@ -10,6 +10,8 @@ set shellslash          " to use '/' for path delimiter in Windows
 set modeline            " use modeline mode
 "set clipboard+=unnamed  " share clipboard
 "set clipboard+=autoselect
+set vb t_vb=                     " ビープをならさない
+set whichwrap=b,s,h,l,<,>,[,]    " カーソルを行頭、行末で止まらないようにする
 
 " Tab character
 set expandtab       " use space instead of tab
@@ -284,7 +286,7 @@ let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
 let Tlist_Show_One_File = 1 " show only current file
 let Tlist_Exit_OnlyWindow = 1 " close vim if taglist is last window
 let Tlist_Use_Right_Window = 1
-let Tlist_Auto_Open = 1
+"let Tlist_Auto_Open = 1
 let Tlist_Auto_Update = 1
 nmap <F10>  :Tlist<CR>
 

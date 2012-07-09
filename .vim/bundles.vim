@@ -7,6 +7,7 @@ call vundle#rc()
   Bundle 'smartchr'
   Bundle 'speeddating.vim'
   Bundle 'yanktmp.vim'
+  Bundle 'bufexplorer.zip'
   " }}}
 " Completion {{{
   Bundle 'Shougo/neocomplcache'
@@ -16,7 +17,6 @@ call vundle#rc()
   Bundle 'eregex.vim'
 " }}}
 " Programming {{{
-  Bundle 'AutoClose'
   Bundle 'errormarker.vim'
   Bundle 'Source-Explorer-srcexpl.vim'
   Bundle 'taglist.vim'
