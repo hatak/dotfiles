@@ -18,3 +18,4 @@ setlocal iskeyword+=:
 map ,pt <ESC>:%! perltidy<CR>
 map ,ptv <ESC>:%'<, '>! perltidy<CR>
 
+inoremap <expr> = smartchr#loop(' = ', ' => ', ' == ', '=')
