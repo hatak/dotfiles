@@ -215,6 +215,8 @@ export SVN_EDITOR=/usr/bin/vim
 export GIT_EDITOR=/usr/bin/vim
 export PATH=$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH
 
+[ -d /usr/local/mysql/lib ] && export DYLD_LIBRARY_PATH=/usr/local/mysql/lib
+
 ## load user .zshrc configuration file
 [ -f ${HOME}/.zshrc.local ] && source ${HOME}/.zshrc.local
 
