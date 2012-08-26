@@ -35,6 +35,9 @@ call vundle#rc()
   Bundle 'jQuery'
   Bundle 'nginx.vim'
   Bundle 'tpope/vim-markdown'
+  Bundle 'bbommarito/vim-slim'
+  Bundle 'groenewege/vim-less'
+  Bundle 'vim-coffee-script'
 " }}}
 " Utility {{{
   Bundle 'DirDiff.vim'
