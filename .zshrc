@@ -211,11 +211,17 @@ sha1() {
 # perlbrew
 [ -f ${HOME}/perl5/perlbrew/etc/bashrc ] && source ${HOME}/perl5/perlbrew/etc/bashrc
 
+# rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# mysql
+[ -d /usr/local/mysql/lib ] && export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:${DYLD_LIBRARY_PATH}
+
+# vcs (svn, git)
 export SVN_EDITOR=/usr/bin/vim
 export GIT_EDITOR=/usr/bin/vim
-export PATH=$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH
 
-[ -d /usr/local/mysql/lib ] && export DYLD_LIBRARY_PATH=/usr/local/mysql/lib
+export PATH=${HOME}/bin:/usr/local/sbin:/usr/local/bin:${PATH}
 
 ## load user .zshrc configuration file
 [ -f ${HOME}/.zshrc.local ] && source ${HOME}/.zshrc.local
