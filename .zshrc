@@ -211,6 +211,10 @@ sha1() {
 
 ## set env
 #
+
+# smartcd
+[[ -r "$HOME/.smartcd_config" ]] && source ~/.smartcd_config
+
 # perlbrew
 [ -f ${HOME}/perl5/perlbrew/etc/bashrc ] && source ${HOME}/perl5/perlbrew/etc/bashrc
 
