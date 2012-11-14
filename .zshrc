@@ -116,6 +116,9 @@ setopt share_history        # share command history data
 bindkey '^R' history-incremental-pattern-search-backward
 bindkey '^S' history-incremental-pattern-search-forward
 
+# print system execution times
+REPORTTIME=1
+
 ## Completion configuration
 #
 fpath=(${HOME}/.zsh/functions/Completion ${fpath})
@@ -213,9 +216,6 @@ sha1() {
 
 # rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-# mysql
-[ -d /usr/local/mysql/lib ] && export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:${DYLD_LIBRARY_PATH}
 
 # vcs (svn, git)
 export SVN_EDITOR=/usr/bin/vim
