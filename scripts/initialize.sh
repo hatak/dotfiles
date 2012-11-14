@@ -6,6 +6,7 @@ git submodule update
 git submodule foreach 'git checkout master'
 
 # create symbolic link
+ln -snf `pwd`/.tmux.d ~/.tmux.d
 ln -snf `pwd`/.vim ~/.vim
 ln -sf `pwd`/.gitconfig ~/.gitconfig
 ln -sf `pwd`/.my.cnf ~/.my.cnf
