@@ -11,7 +11,7 @@ call vundle#rc()
   " }}}
 " Completion {{{
   Bundle 'Shougo/neocomplcache'
-  Bundle 'Shougo/neocomplcache-snippets-complete'
+  Bundle 'Shougo/neosnippet'
 " }}}
 " Searching {{{
   Bundle 'eregex.vim'
