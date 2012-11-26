@@ -205,6 +205,7 @@ augroup filetypedetect
     au! BufRead,BufNewFile *.tt2    setfiletype html.tt
     au! BufRead,BufNewFile *.psgi   setfiletype perl
     au! BufRead,BufNewFile *.ddl    setfiletype sql
+    au! BufRead,BufNewFile *.m      setfiletype objc
 augroup END
 
 " autodate.vim
