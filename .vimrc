@@ -204,6 +204,7 @@ augroup filetypedetect
     au! BufRead,BufNewFile *.tt     setfiletype html.tt
     au! BufRead,BufNewFile *.tt2    setfiletype html.tt
     au! BufRead,BufNewFile *.psgi   setfiletype perl
+    au! BufRead,BufNewFile *.t      setfiletype perl
     au! BufRead,BufNewFile *.ddl    setfiletype sql
     au! BufRead,BufNewFile *.m      setfiletype objc
 augroup END
@@ -338,6 +339,30 @@ nmap <Leader>r <plug>(quickrun)
 augroup quickfixopen
   autocmd!
   autocmd QuickfixCmdPost make cw
+augroup END
+
+" Perl
+augroup Perl
+    autocmd BufNewFile *.pl 0r $HOME/.vim/template/perl-script.txt
+    autocmd BufNewFile *.t  0r $HOME/.vim/template/perl-test.txt
+
+    function! s:pm_template()
+        let path = substitute(expand('%'), '.*lib/', '', 'g')
+        let path = substitute(path, '[\\/]', '::', 'g')
+        let path = substitute(path, '\.pm$', '', 'g')
+
+        call append(0, 'package ' . path . ';')
+        call append(1, 'use strict;')
+        call append(2, 'use warnings;')
+        call append(3, 'use utf8;')
+        call append(4, '')
+        call append(5, '')
+        call append(6, '')
+        call append(7, '1;')
+        call cursor(6, 0)
+        " echomsg path
+    endfunction
+    autocmd BufNewFile *.pm call s:pm_template()
 augroup END
 
 " java
