@@ -13,5 +13,3 @@
 	textconv = "perl -MJSON -0e \"\\$m = decode_json(<>)->{modules}; print qq(\\$_~\\$m->{\\$_}->{version}\\n) for sort keys %\\$m\""
 [merge]
 	ff = false
-[push]
-	default = simple
