@@ -29,6 +29,7 @@ call vundle#rc()
   Bundle 'ywatase/flymake-perl.vim'
   Bundle 'ruby.vim'
   Bundle 'tpope/vim-rails'
+  Bundle 'mitechie/pyflakes-pathogen'
 " }}}
 " Syntax {{{
   Bundle 'JavaScript-syntax'
