@@ -38,7 +38,7 @@ call vundle#rc()
   Bundle 'nagios-syntax'
   Bundle 'tpope/vim-markdown'
   Bundle 'RST-Tables-CJK'
-  Bundle 'bbommarito/vim-slim'
+  Bundle 'slim-template/vim-slim'
   Bundle 'groenewege/vim-less'
   Bundle 'vim-coffee-script'
 " }}}
@@ -47,6 +47,8 @@ call vundle#rc()
   Bundle 'Gist.vim'
   Bundle 'fuenor/vim-statusline'
   Bundle 'Lokaltog/vim-powerline'
+  Bundle 'mattn/webapi-vim'
+  Bundle 'mattn/mkdpreview-vim'
 " }}}
 " ColorSchema {{{
   Bundle 'desert256.vim'
