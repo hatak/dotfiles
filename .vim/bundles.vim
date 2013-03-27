@@ -31,6 +31,7 @@ call vundle#rc()
   Bundle 'tpope/vim-rails'
   Bundle 'mitechie/pyflakes-pathogen'
   Bundle 'nvie/vim-flake8'
+  Bundle 'lua-support'
 " }}}
 " Syntax {{{
   Bundle 'JavaScript-syntax'

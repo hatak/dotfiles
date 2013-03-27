@@ -212,21 +212,26 @@ sha1() {
 ## set env
 #
 
-# smartcd
-[[ -r "$HOME/.smartcd_config" ]] && source ~/.smartcd_config
+export PATH=/usr/local/sbin:/usr/local/bin:${PATH}
+[ -d /usr/local/mysql ] && export PATH=/usr/local/mysql/bin:${PATH}
+export PATH=${HOME}/bin:${HOME}/.plenv/bin:${HOME}/.rbenv/bin:${HOME}/.pyenv/bin:${PATH}
 
-# perlbrew
-[ -f ${HOME}/perl5/perlbrew/etc/bashrc ] && source ${HOME}/perl5/perlbrew/etc/bashrc
+# smartcd
+[ -r "$HOME/.smartcd_config" ] && source ~/.smartcd_config
+
+# plenv
+if which plenv > /dev/null; then eval "$(plenv init -)"; fi
 
 # rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# pyenv
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 # vcs (svn, git)
 export SVN_EDITOR=/usr/bin/vim
 export GIT_EDITOR=/usr/bin/vim
 export EDITOR=/usr/bin/vim
-
-export PATH=${HOME}/bin:/usr/local/sbin:/usr/local/bin:${PATH}
 
 ## load user .zshrc configuration file
 [ -f ${HOME}/.zshrc.local ] && source ${HOME}/.zshrc.local
