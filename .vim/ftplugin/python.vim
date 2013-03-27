@@ -15,3 +15,6 @@ setl colorcolumn=80
 " Folding
 setl foldmethod=indent
 setl foldlevel=99
+
+" Flake8
+autocmd BufWritePost *.py call Flake8()

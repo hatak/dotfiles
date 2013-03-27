@@ -51,7 +51,7 @@ darwin*)
         local PROMCOL=$'%f'
         ;;
     *)
-        local PROMCOL=$'%F{2}'
+        local PROMCOL=$'%F{4}'
         ;;
     esac
     PROMPT=$PROMCOL'[${USER}@${HOST%%.*}]%f%(!.#.$) '
@@ -224,6 +224,7 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 # vcs (svn, git)
 export SVN_EDITOR=/usr/bin/vim
 export GIT_EDITOR=/usr/bin/vim
+export EDITOR=/usr/bin/vim
 
 export PATH=${HOME}/bin:/usr/local/sbin:/usr/local/bin:${PATH}
 
