@@ -48,7 +48,7 @@ call vundle#rc()
   Bundle 'DirDiff.vim'
   Bundle 'Gist.vim'
   Bundle 'fuenor/vim-statusline'
-  Bundle 'Lokaltog/vim-powerline'
+  Bundle 'Lokaltog/powerline'
   Bundle 'mattn/webapi-vim'
   Bundle 'mattn/mkdpreview-vim'
 " }}}
