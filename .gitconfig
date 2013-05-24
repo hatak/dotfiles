@@ -1,15 +1,15 @@
 [user]
-	name = Hisashi HATAKEYAMA
-	email = id.hatak@gmail.com
+    name = Hisashi HATAKEYAMA
+    email = me@hatak.jp
 [color]
-	ui = auto
+    ui = auto
 [alias]
-	ci = commit
-	st = status -sb
-	co = checkout
-	df = diff
-	br = branch
+    ci = commit
+    st = status -sb
+    co = checkout
+    df = diff
+    br = branch
     l  = log --pretty=full
     ol = log --oneline
 [diff "cartonlock"]
-	textconv = "perl -MJSON -0e \"\\$m = decode_json(<>)->{modules}; print qq(\\$_~\\$m->{\\$_}->{version}\\n) for sort keys %\\$m\""
+    textconv = "perl -MJSON -0e \"\\$m = decode_json(<>)->{modules}; print qq(\\$_~\\$m->{\\$_}->{version}\\n) for sort keys %\\$m\""
