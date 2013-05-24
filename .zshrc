@@ -72,6 +72,8 @@ setopt auto_pushd
 #
 setopt auto_menu
 zstyle ':completion:*:default' menu select=1
+zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
+                              /usr/sbin /usr/bin /sbin /bin
 
 # command correct edition before each completion attempt
 #
@@ -121,7 +123,7 @@ REPORTTIME=1
 
 ## Completion configuration
 #
-fpath=(${HOME}/.zsh/functions/Completion ${fpath})
+fpath=(${HOME}/.zsh.d/functions ${HOME}/.zsh-completions ${fpath})
 autoload -U compinit
 compinit
 # auto push
