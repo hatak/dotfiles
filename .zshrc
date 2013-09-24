@@ -40,7 +40,7 @@ setopt prompt_subst
 case "${OSTYPE}" in
 darwin*)
     local PROMCOL=$'%F{$[1+RANDOM%6]}'
-    PROMPT='%(?.%F{green}^-^%f.%F{red}@_@%f) '$PROMCOL'%l${WINDOW:+":$WINDOW"}:%h%F{green}$psvar[1]%f%(!.#.$) '
+    PROMPT='%(?.%F{green}:)%f.%F{red}:(%f) '$PROMCOL'%l${WINDOW:+":$WINDOW"}:%h%F{green}$psvar[1]%f%(!.#.$) '
     ;;
 *)
     case "$USER" in

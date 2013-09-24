@@ -1,6 +1,10 @@
 [user]
     name = Hisashi HATAKEYAMA
     email = me@hatak.jp
+[core]
+    pager = lv -c
+    quotepath = false
+    precomposeunicode = true
 [color]
     ui = auto
 [alias]
@@ -13,3 +17,5 @@
     ol = log --oneline
 [diff "cartonlock"]
     textconv = "perl -MJSON -0e \"\\$m = decode_json(<>)->{modules}; print qq(\\$_~\\$m->{\\$_}->{version}\\n) for sort keys %\\$m\""
+[github]
+    user = hatak

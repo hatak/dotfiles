@@ -112,6 +112,7 @@ filetype indent on " to use filetype indent
 filetype plugin on " to use filetype plugin
 
 " color schema
+set t_Co=256
 colorscheme desert256
 
 " ポップアップメニューの色変える

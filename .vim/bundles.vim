@@ -46,7 +46,8 @@ call vundle#rc()
 " }}}
 " Utility {{{
   Bundle 'DirDiff.vim'
-  Bundle 'Gist.vim'
+  Bundle 'mattn/webapi-vim'
+  Bundle 'mattn/gist-vim'
   Bundle 'fuenor/vim-statusline'
   Bundle 'Lokaltog/powerline'
   Bundle 'mattn/webapi-vim'
