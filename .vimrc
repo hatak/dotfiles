@@ -231,31 +231,34 @@ if getcwd() != $HOME
     endif
 endif
 
-" neocomplcache
+" neocomplcache + neosnippet
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
 " Use neocomplcache.
 let g:neocomplcache_enable_at_startup = 1
 " Use smartcase.
 let g:neocomplcache_enable_smart_case = 1
-" Use camel case completion.
+" Not use camel case completion.
 let g:neocomplcache_enable_camel_case_completion = 0
 " Use underbar completion.
 let g:neocomplcache_enable_underbar_completion = 1
-
+" Set minimum cpmpletion length.
 let g:neocomplcache_auto_completion_start_length = 1
 
 " Set minimum syntax keyword length.
 let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
+" Set overwrite completefunc (Issue #276)
+let g:neocomplcache_force_overwrite_completefunc = 1
+
 " Define dictionary.
 let g:neocomplcache_dictionary_filetype_lists = {
     \ 'default' : '',
     \ 'perl'       : $HOME.'/.vim/dict/perl_functions.dict',
-    \ 'php'        : $HOME.'/.vim/dict/php_functions.dict'
+    \ 'php'        : $HOME.'/.vim/dict/php_functions.dict',
+    \ 'ruby'       : $HOME.'/.vim/dict/ruby_functions.dict'
     \ }
-let g:neocomplcache_snippets_dir = $HOME.'/.vim/snippets'
 
 let g:neocomplcache_ctags_arguments_list = {
   \ 'perl' : '-R -h ".pm"'
@@ -268,19 +271,42 @@ endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
 " Plugin key-mappings.
-" <TAB>: expand snippets or completion.
-imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>
 inoremap <expr><C-g> neocomplcache#undo_completion()
 inoremap <expr><C-l> neocomplcache#complete_common_string()
 
 " <CR>: close popup and save indent.
-inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+    return neocomplcache#smart_close_popup() . "\<CR>"
+endfunction
+
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplcache#smart_close_popup() . "\<C-h>"
 inoremap <expr><BS>  neocomplcache#smart_close_popup() . "\<C-h>"
 inoremap <expr><C-y> neocomplcache#close_popup()
 inoremap <expr><C-e> neocomplcache#cancel_popup()
+
+" <TAB>: completion.
+inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
+
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+
+" SuperTab like snippets behavior.
+imap <expr><TAB> pumvisible() ?
+  \ "\<C-n>"
+  \: neosnippet#jumpable() ?
+    \ "\<Plug>(neosnippet_expand_or_jump)"
+    \: "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+  \ "\<Plug>(neosnippet_expand_or_jump)"
+  \: "\<TAB>"
+
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
 
 " taglist.vim
 set tags=tags

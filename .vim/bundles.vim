@@ -28,6 +28,8 @@ call vundle#rc()
   Bundle 'ywatase/perldoc-vim'
   Bundle 'ywatase/flymake-perl.vim'
   Bundle 'ruby.vim'
+  Bundle 'vim-ruby/vim-ruby'
+  Bundle 'tpope/vim-bundler'
   Bundle 'tpope/vim-rails'
   Bundle 'mitechie/pyflakes-pathogen'
   Bundle 'nvie/vim-flake8'
